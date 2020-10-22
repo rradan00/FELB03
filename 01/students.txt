@@ -1,0 +1,5 @@
+Ante    Antic      45
+Bruno   Busic      20
+Ciril   Cirilovic  85
+Denis   Denisovic  90
+Eugen   Eugenij    65
