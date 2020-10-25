@@ -12,24 +12,26 @@ typedef struct _student {
     int relative;
 } Student;
 
-void read(Student** students, int* count);
-void grade(Student* students, int count);
-void print(Student* students, int count);
+int read(Student** students, int* count);
+int grade(Student* students, int count);
+int print(Student* students, int count);
 
 int main(){
     Student* students;
     int count;
 
-    read(&students, &count);
+    int errors = read(&students, &count);
+    if(errors) exit(errors);
+
     grade(students, count);
     print(students, count);
 }
 
-void read(Student** students, int* count){
+int read(Student** students, int* count){
     FILE* file = fopen(STUDENTS_FILE, "r");
     if(!file) {
         printf("Students file missing or not accessible!\n");
-        exit(1);
+        return 1;
     }
 
     int n = 0;
@@ -42,18 +44,24 @@ void read(Student** students, int* count){
         n++;
     }
     *count = n;
+
+    return 0;
 }
 
-void grade(Student* students, int count){
+int grade(Student* students, int count){
     int max = 0;
     for(int i = 0; i < count; i++)
         if(students[i].score > max) max = students[i].score;
 
     for(int i = 0; i < count; i++)
         students[i].relative = round((double)students[i].score/max*100);
+
+    return 0;
 }
 
-void print(Student* students, int count){
+int print(Student* students, int count){
     for(int i = 0; i < count; i++)
         printf("%-10s %-10s %3d %3d%\n", students[i].name, students[i].surname, students[i].score, students[i].relative);
+
+    return 0;
 }
