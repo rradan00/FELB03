@@ -7,13 +7,15 @@ Student: Roko Radanovic
 
 This is a remote repository for assignments per requirement of laboratory practices for class: Data Structures 120
 
+**BONUS CHALLENGE:** No loops (while, for). Simple recursive loops allowed. While(!Feof(file)) is also an exception.
+
 ## Usage
 Compile:
 ```sh
 gcc code.c
 
-#Optional parameters, linux
-gcc code.c -lm -o binary.out
+#Optional parameters, linking
+gcc main.c task3.c -lm -o binary.out
 ```
 Run in terminal:
 ```sh
@@ -27,7 +29,7 @@ Run in terminal:
 ## Progress
 - [x] 1
 - [x] 2
-- [ ] 3
+- [x] 3
 - [ ] 4
 - [ ] 5
 - [ ] 6
